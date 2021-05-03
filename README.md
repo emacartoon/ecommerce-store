@@ -19,7 +19,7 @@
 ## Links
  
 * [Github Repository](https://github.com/emacartoon/Tech-Blog) 
-* [Video Walkthrough]() 
+* [Video Walkthrough](https://drive.google.com/file/d/1-W7ZWs2AwKuiR6kDbKM8pqZtO3hTsmg5/view?usp=sharing) 
  
 ## Description
 
