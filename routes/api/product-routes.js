@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { Product, Category, Tag, ProductTag } = require("../../models");
 
+
 // The `/api/products` endpoint
 
 // get all products
@@ -59,7 +60,7 @@ router.post("/", (req, res) => {
         });
         return ProductTag.bulkCreate(productTagIdArr);
       }
-      // if no tags, just give the product
+      // if no tags, just return the product
       res.status(200).json(product);
     })
     .then((productTagIds) => res.status(200).json(productTagIds))
@@ -70,23 +71,24 @@ router.post("/", (req, res) => {
 });
 
 // update product
-router.put("/:id", async (req, res) => {
+// const updatedProd = await Product.update(
+//   {
+//     // All data fields to update
+//     product_name: req.body.product_name,
+//     price: req.body.price,
+//     stock: req.body.stock,
+//     category: req.body.category_id,
+//   },
+router.put("/:id", (req, res) => {
   // update product data
-  const updatedProd = await Product.update(
-    {
-      // All data fields to update
-      product_name: req.body.product_name,
-      price: req.body.price,
-      stock: req.body.stock,
-      category: req.body.category_id,
-    },
-    {
+  Product.update(req.body, {
+
       where: {
-        product_id: req.params.product_id,
+        id: req.params.id,
       },
     }
   )
-    .then((products) => {
+    .then((product) => {
       // find all associated tags from ProductTag
       return ProductTag.findAll({ where: { product_id: req.params.id } });
     })
@@ -99,7 +101,7 @@ router.put("/:id", async (req, res) => {
         .map((tag_id) => {
           return {
             product_id: req.params.id,
-            tag_id: req.params.tag_id,
+            tag_id,
           };
         });
       // figure out which ones to remove
