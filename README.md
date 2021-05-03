@@ -18,7 +18,7 @@
   
 ## Links
  
-* [Github Repository](https://github.com/emacartoon/Tech-Blog) 
+* [Github Repository](https://github.com/emacartoon/ecommerce-store) 
 * [Video Walkthrough](https://drive.google.com/file/d/1-W7ZWs2AwKuiR6kDbKM8pqZtO3hTsmg5/view) 
  
 ## Description
